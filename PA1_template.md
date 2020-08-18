@@ -39,13 +39,13 @@ summary(data)
 
 
 ## What is mean total number of steps taken per day?
-1. Calculate the total number of steps taken per day
+1. Calculate the total number of steps taken per day.  
 
 ```r
 daily_steps <- aggregate(data$steps, list(data$date), sum, na.rm = TRUE)
 names(daily_steps) <- c("Date", "Steps")
 ```
-2. Histogram of the total number of steps taken each day  
+2. Histogram of the total number of steps taken each day .   
 
 ```r
 with(daily_steps, hist(Steps, breaks = seq(0,25000, by=2500), main = "Total number of steps taken per day"))
@@ -53,7 +53,7 @@ with(daily_steps, hist(Steps, breaks = seq(0,25000, by=2500), main = "Total numb
 
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 <br>
-3. Calculate and report the mean and median of the total number of steps taken per day
+3. Calculate and report the mean and median of the total number of steps taken per day.  
 
 ```r
 mean(daily_steps$Steps)
@@ -74,7 +74,7 @@ median(daily_steps$Steps)
 
 
 ## What is the average daily activity pattern?
-1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).  
 
 ```r
 avg_daily_steps <- aggregate(data$steps,list(data$interval), mean, na.rm=TRUE)
@@ -106,7 +106,8 @@ sum(is.na(data$steps))
 ```
 ## [1] 2304
 ```
-2. Devise a strategy for filling in all of the missing values in the dataset. AND
+2. Devise a strategy for filling in all of the missing values in the dataset.  
+Ans. All the missing values are replaced by the mean for that 5-minute interval.
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
